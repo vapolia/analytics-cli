@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Vana.Cli/Vana.Cli.csproj" />
+    <Project Path="src/Vana.Client/Vana.Client.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Vana.Tests/Vana.Tests.csproj" />
+  </Folder>
+</Solution>

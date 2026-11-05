@@ -1,0 +1,30 @@
+name: release
+
+# A tag v* publishes one native vana binary per platform on the GitHub release.
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  cli:
+    strategy:
+      matrix:
+        include:
+          - { os: windows-latest, rid: win-x64, file: vana.exe }
+          - { os: macos-latest, rid: osx-arm64, file: vana }
+          - { os: ubuntu-latest, rid: linux-x64, file: vana }
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+      - run: dotnet publish src/Vana.Cli -c Release -r ${{ matrix.rid }} -o out
+      - shell: bash
+        run: mv out/${{ matrix.file }} vana-${{ matrix.rid }}${{ matrix.rid == 'win-x64' && '.exe' || '' }}
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: vana-${{ matrix.rid }}*
