@@ -21,7 +21,7 @@ vana instructions <project> [--set <file>]
 ```
 
 - A session lasts 30 days. From 5 days before its end, every command says when it ends.
-- The session file is in `%APPDATA%/vana` (Windows) or `~/.config/vana`. `VANA_CONFIG_DIR` moves it.
+- The session file is in `%APPDATA%/vana` (Windows) or `~/.config/vana`. Set `VANA_CONFIG_DIR` to store it elsewhere.
 
 Each GitHub release has a binary for Windows x64, macOS arm64 and Linux x64. To build one:
 
