@@ -1,6 +1,6 @@
 using System.Text.Json;
-using Vana.Cli;
-using Vana.Client;
+using Vapolia.Analytics.AnalyticsCli;
+using Vapolia.Analytics.Clients;
 
 const string Usage = """
     vana, Vapolia analytics
@@ -121,7 +121,7 @@ Session Current()
 
 Task<string> Token(Session session) => Login.AccessToken(http, session, clock, cancel.Token);
 
-AnalyticsClient Client(Session session) => new(http, new Uri(session.PortalUrl.TrimEnd('/') + "/"));
+PublicClient Client(Session session) => new(http, new Uri(session.PortalUrl.TrimEnd('/') + "/"));
 
 static void Print(string json)
 {

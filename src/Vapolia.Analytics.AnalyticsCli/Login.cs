@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 
-namespace Vana.Cli;
+namespace Vapolia.Analytics.AnalyticsCli;
 
 /// <summary>Logs in through the portal in the browser, with a loopback redirect (RFC 8252) and PKCE.</summary>
 public static class Login

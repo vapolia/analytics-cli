@@ -12,11 +12,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Vana.Client\Vana.Client.csproj" />
+    <ProjectReference Include="..\Vapolia.Analytics.Clients\Vapolia.Analytics.Clients.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <InternalsVisibleTo Include="Vana.Tests" />
+    <InternalsVisibleTo Include="Vapolia.Analytics.AnalyticsCli.Tests" />
   </ItemGroup>
 
 </Project>

@@ -1,12 +1,12 @@
 using System.Net;
 using System.Text;
-using Vana.Client;
+using Vapolia.Analytics.Clients;
 
-namespace Vana.Tests;
+namespace Vapolia.Analytics.AnalyticsCli.Tests;
 
 /// <summary>The user's token goes to the portal only; the read server only ever sees the short read token.</summary>
 [TestClass]
-public class AnalyticsClientTests
+public class PublicClientTests
 {
     sealed class Recorder : HttpMessageHandler
     {
@@ -29,7 +29,7 @@ public class AnalyticsClientTests
     }
 
     readonly Recorder recorder = new();
-    AnalyticsClient Client() => new(new HttpClient(recorder), new Uri("https://portal.test/"));
+    PublicClient Client() => new(new HttpClient(recorder), new Uri("https://portal.test/"));
 
     [TestMethod]
     public async Task ReadsAViewWithTheExchangedTokenOnly()

@@ -3,7 +3,7 @@ using System.Net.Http.Json;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Vana.Client;
+namespace Vapolia.Analytics.Clients;
 
 /// <summary>A refused call, with the status and the reason the server gave.</summary>
 public sealed class AnalyticsException(int status, string message) : Exception(message)
@@ -29,7 +29,7 @@ public sealed record ReadAccess(
 /// The user's token goes to the portal only, which exchanges it for a 5-minute read token (RFC 8693). The read server only ever sees
 /// that read token. Holds no credential of its own: the CLI passes the user's token at each call.
 /// </remarks>
-public sealed class AnalyticsClient(HttpClient http, Uri portal)
+public sealed class PublicClient(HttpClient http, Uri portal)
 {
     public Task<List<Project>> Projects(string userToken, CancellationToken cancel = default) =>
         Send<List<Project>>(HttpMethod.Get, new Uri(portal, "api/projects"), userToken, null, cancel);

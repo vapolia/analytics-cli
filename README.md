@@ -29,12 +29,12 @@ vana instructions <project> [--set <file>]
 A published GitHub release tagged `vX.Y.Z` gets one native binary per platform (Windows x64, macOS arm64, Linux x64), at version `X.Y.Z`. To build one:
 
 ```powershell
-dotnet publish src/Vana.Cli -c Release -r win-x64
+dotnet publish src/Vapolia.Analytics.AnalyticsCli -c Release -r win-x64
 ```
 
 ## Development
 
 ```powershell
 dotnet build
-dotnet run --project tests/Vana.Tests
+dotnet run --project tests/Vapolia.Analytics.AnalyticsCli.Tests
 ```

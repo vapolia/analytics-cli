@@ -1,7 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Vana.Cli;
+namespace Vapolia.Analytics.AnalyticsCli;
 
 /// <summary>The local login: the portal URL, the registered client, and the user's tokens.</summary>
 /// <remarks>The session ends <see cref="Lifetime"/> after login, whatever its use: the portal never extends a refresh token.</remarks>
@@ -83,7 +83,7 @@ public sealed record RegistrationResponse([property: JsonPropertyName("client_id
 [JsonSerializable(typeof(ServerMetadata))]
 [JsonSerializable(typeof(RegistrationRequest))]
 [JsonSerializable(typeof(RegistrationResponse))]
-[JsonSerializable(typeof(List<Vana.Client.Project>))]
-[JsonSerializable(typeof(Vana.Client.Instructions))]
+[JsonSerializable(typeof(List<Vapolia.Analytics.Clients.Project>))]
+[JsonSerializable(typeof(Vapolia.Analytics.Clients.Instructions))]
 [JsonSerializable(typeof(JsonElement))]
 internal sealed partial class CliJson : JsonSerializerContext;
