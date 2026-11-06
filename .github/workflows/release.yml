@@ -19,9 +19,9 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v4
+      - uses: actions/setup-dotnet@v6
         with:
-          global-json-file: global.json
+          dotnet-version: '10.0.x'
       - run: dotnet publish src/Vana.Cli -c Release -r ${{ matrix.rid }} -o out
       - shell: bash
         run: mv out/${{ matrix.file }} vana-${{ matrix.rid }}${{ matrix.rid == 'win-x64' && '.exe' || '' }}
