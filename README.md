@@ -26,7 +26,7 @@ vana instructions <project> [--set <file>]
 - The session lasts 30 days from login and is never extended. From 5 days before its end, every command says when it ends.
 - The session file is in `%APPDATA%/vana` (Windows) or `~/.config/vana`, readable by its owner only. `VANA_CONFIG_DIR` moves it.
 
-A tag `v*` publishes one native binary per platform (Windows x64, macOS arm64, Linux x64) on the GitHub release. To build one:
+A published GitHub release tagged `vX.Y.Z` gets one native binary per platform (Windows x64, macOS arm64, Linux x64), at version `X.Y.Z`. To build one:
 
 ```powershell
 dotnet publish src/Vana.Cli -c Release -r win-x64

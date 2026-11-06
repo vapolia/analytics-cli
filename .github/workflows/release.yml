@@ -1,9 +1,9 @@
 name: release
 
-# A tag v* publishes one native vana binary per platform on the GitHub release.
+# A published GitHub release tagged vX.Y.Z gets one native vana binary per platform. Any other tag fails the run.
 on:
-  push:
-    tags: ['v*']
+  release:
+    types: [published]
 
 permissions:
   contents: write
@@ -17,14 +17,21 @@ jobs:
           - { os: macos-latest, rid: osx-arm64, file: vana }
           - { os: ubuntu-latest, rid: linux-x64, file: vana }
     runs-on: ${{ matrix.os }}
+    env:
+      TAG: ${{ github.event.release.tag_name }}
+      GH_TOKEN: ${{ github.token }}
     steps:
+      - shell: bash
+        run: |
+          [[ "$TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]] || { echo "Tag '$TAG' is not vX.Y.Z"; exit 1; }
+          echo "VERSION=${TAG#v}" >> "$GITHUB_ENV"
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v6
         with:
           dotnet-version: '10.0.x'
-      - run: dotnet publish src/Vana.Cli -c Release -r ${{ matrix.rid }} -o out
+      - run: dotnet publish src/Vana.Cli -c Release -r ${{ matrix.rid }} -p:Version=${{ env.VERSION }} -o out
       - shell: bash
-        run: mv out/${{ matrix.file }} vana-${{ matrix.rid }}${{ matrix.rid == 'win-x64' && '.exe' || '' }}
-      - uses: softprops/action-gh-release@v2
-        with:
-          files: vana-${{ matrix.rid }}*
+        run: |
+          name=vana-${{ matrix.rid }}${{ matrix.rid == 'win-x64' && '.exe' || '' }}
+          mv out/${{ matrix.file }} "$name"
+          gh release upload "$TAG" "$name" --clobber
