@@ -1,6 +1,6 @@
 <Solution>
   <Folder Name="/src/">
-    <Project Path="src/Vapolia.Analytics.AnalyticsCli/Vapolia.Analytics.AnalyticsCli.csproj" />
+    <Project Path="src/cli/Vapolia.Analytics.AnalyticsCli.csproj" />
     <Project Path="src/Vapolia.Analytics.Clients/Vapolia.Analytics.Clients.csproj" />
     <Project Path="src/Vapolia.Analytics.AnalyticsCli.Tests/Vapolia.Analytics.AnalyticsCli.Tests.csproj" />
   </Folder>
