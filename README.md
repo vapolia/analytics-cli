@@ -36,5 +36,5 @@ dotnet publish src/Vapolia.Analytics.AnalyticsCli -c Release -r win-x64
 
 ```powershell
 dotnet build
-dotnet run --project tests/Vapolia.Analytics.AnalyticsCli.Tests
+dotnet run --project src/Vapolia.Analytics.AnalyticsCli.Tests
 ```

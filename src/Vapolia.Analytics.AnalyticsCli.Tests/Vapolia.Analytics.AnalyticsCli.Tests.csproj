@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Vapolia.Analytics.Clients\Vapolia.Analytics.Clients.csproj" />
+    <ProjectReference Include="..\Vapolia.Analytics.Clients\Vapolia.Analytics.Clients.csproj" />
   </ItemGroup>
 
 </Project>
